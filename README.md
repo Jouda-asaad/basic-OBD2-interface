@@ -20,8 +20,23 @@ A Python application that uses a Raspberry Pi and a Bluetooth OBD-II adapter to 
 1.  **Clone this repository to your Raspberry Pi.**
 
 2.  **Configure the Bluetooth Connection:**
-    You must pair the OBD-II adapter with your Raspberry Pi and bind it to a serial port (e.g., `/dev/rfcomm99`). This can be a complex process. This guide is a good reference for the required Linux commands:
-    [hackster.io: Raspberry Pi Smart Car](https://www.hackster.io/tinkernut/raspberry-pi-smart-car-8641ca)
+    a. **Scan for and pair the adapter**
+    Use the `bluetoothctl` command to find your device's MAC address and pair with it.
+    ```bash
+    bluetoothctl
+    scan on
+    # Wait for your device to appear, then copy the MAC address
+    pair <your_mac_address>
+    # Enter the PIN, usually 1234 or 0000
+    trust <your_mac_address>
+    exit
+    ```
+    b. **Bind the device to a serial port**
+    Use the `rfcomm` command to bind the MAC address to a port.
+    ```bash
+    sudo rfcomm bind 99 <your_mac_address> 1
+    ```
+    This will create a `/dev/rfcomm99` device that the application can use.
 
 ## Usage
 
