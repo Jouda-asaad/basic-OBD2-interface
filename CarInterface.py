@@ -6,8 +6,8 @@ import time
 
 # --- Configuration Constants ---
 # Connection settings
-DEFAULT_PORT = "/dev/rfcomm99"
-BAUDRATE = 9600
+DEFAULT_PORT = None  # Set to None to auto-detect serial port (for USB adapters)
+BAUDRATE = 38400     # Common for USB ELM327 adapters
 CONNECTION_TIMEOUT = 30
 
 # Unit conversion

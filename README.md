@@ -1,12 +1,12 @@
 # OBD-II Raspberry Pi Dashboard
 
-A Python application that uses a Raspberry Pi and a Bluetooth OBD-II adapter to retrieve and display real-time vehicle data (Speed, RPM, Engine Load) on a simple graphical interface.
+A Python application that uses a Raspberry Pi and an OBD-II adapter (Bluetooth or USB) to retrieve and display real-time vehicle data (Speed, RPM, Engine Load) on a simple graphical interface.
 
 ## Prerequisites
 
 ### Hardware
 *   A Raspberry Pi (tested on Pi 4)
-*   A Bluetooth OBD-II Adapter
+*   An OBD-II Adapter (USB or Bluetooth). Note: The setup for Bluetooth adapters requires manual configuration (see below).
 
 ### Software
 *   Python 3
@@ -19,7 +19,7 @@ A Python application that uses a Raspberry Pi and a Bluetooth OBD-II adapter to 
 
 1.  **Clone this repository to your Raspberry Pi.**
 
-2.  **Configure the Bluetooth Connection:**
+2.  **Configure the Bluetooth Connection (Bluetooth adapters only):**
     a. **Scan for and pair the adapter**
     Use the `bluetoothctl` command to find your device's MAC address and pair with it.
     ```bash
@@ -42,14 +42,17 @@ A Python application that uses a Raspberry Pi and a Bluetooth OBD-II adapter to 
 
 Once the setup is complete, you can run the application.
 
-*   To run with the default port (`/dev/rfcomm99`):
+*   **For USB Adapters:**
+    The script can auto-detect the serial port for most USB ELM327 adapters. Simply run:
     ```bash
     python CarInterface.py
     ```
 
-*   If you bound the adapter to a different port, specify it with the `--port` flag:
+*   **For Bluetooth Adapters:**
+    If you have configured a Bluetooth adapter using `rfcomm` (as described in the setup), you must specify the port:
     ```bash
-    python CarInterface.py --port /dev/your_rfcomm_port
+    python CarInterface.py --port /dev/rfcomm99
     ```
+    Replace `/dev/rfcomm99` with the port you created.
 
 Press the `ESC` key on a connected keyboard to close the application.
