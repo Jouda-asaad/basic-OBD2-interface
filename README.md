@@ -20,6 +20,7 @@ A Python application that uses a Raspberry Pi and an OBD-II adapter (Bluetooth o
 1.  **Clone this repository to your Raspberry Pi.**
 
 2.  **Configure the Bluetooth Connection (Bluetooth adapters only):**
+
     a. **Scan for and pair the adapter**
     Use the `bluetoothctl` command to find your device's MAC address and pair with it.
     ```bash
