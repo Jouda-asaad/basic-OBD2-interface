@@ -7,7 +7,7 @@ import time
 # --- Configuration Constants ---
 # Connection settings
 DEFAULT_PORT = None  # Set to None to auto-detect serial port (for USB adapters)
-BAUDRATE = 38400     # Common for USB ELM327 adapters
+BAUDRATE = 115200    # Common for USB ELM327 adapters
 CONNECTION_TIMEOUT = 30
 
 # Unit conversion
